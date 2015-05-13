@@ -1,25 +1,22 @@
 module.exports = (function() {
   'use strict';
 
-  var DataStructure = require('./dataStructure');
-  var assert = require('assert');
-  var util = require('util');
+  index = null;
 
   function Stack() {
-    this.index = 0;
     this.elements = {};
     DataStructure.call(this);
   }
-  util.inherits(Stack, DataStructure);
-  Stack.registerAction('push', function(element) {
-    this.index = (!!this.index ? 0 : this.index + 1);
-    this.elements[this.index] = element;
-  });
-  Stack.registerAction('pop', function() {
-    var element = this.elements[this.index];
-    delete this.elements[this.index];
-    this.index--;
+  Stack.prototype.push = function(element) {
+    index = (!! index ? 0 : index + 1);
+    this.elements[index] = element;
+  };
+  Stack.prototype.pop = function() {
+    var element = this.elements[index];
+    delete this.elements[index];
+    index = (index - 1 < 0) ? null : index - 1;
     return element;
-  });
+  };
   return Stack;
 }());
+
