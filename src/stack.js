@@ -17,9 +17,15 @@ module.exports = (function() {
         return null;
       }
     };
+    this.length = function() {
+      return index;
+    };
+    this.peek = function() {
+      return this.elements[index];
+    };
 
-    this.elements = [];
     index = 0;
+    this.elements = [];
     if (arguments.length >= 1) {
       for (var i = 0; i < arguments.length; i++) {
         this.push(arguments[i]);
