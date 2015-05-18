@@ -4,7 +4,7 @@ var expect = require("chai").expect;
 var should = require('chai').should();
 describe('DataStructures', function() {
     describe('LinkedList', function() {
-        beforeEach(function() {
+        before(function() {
             list = new LinkedList('hello');
         });
         it('should be able to insert a node at the beggining', function() {
@@ -37,12 +37,14 @@ describe('DataStructures', function() {
             expect(list.currentNode.next).to.be.equal(expected);
         });
         it('should be able to delete a node ', function() {
+          list.insertBeggining("Hello");
+          list.goStart();
           list.insertAfter(" pretty ");
           list.insertAfter("World");
-          list.goStart();
-          list.goNext();
+          list.goPrevious();
           list.deleteCurrent();
-          expect(list.startNode.next).to.be.equal(list.endNode);
+          list.goStart();
+          expect(list.startNode.next.data).to.be.equal("World");
         });
         describe('#node', function() {
             before(function() {
