@@ -9,7 +9,7 @@ function BinarySearch(data, target, callBack) {
   function searchbyIndex(start, end) {
     try {
       if (start >= end || (end <= 1) && start === 0) {
-        if (data[end] == target) {
+        if (data[end] === target) {
           return target;
         }
         throw new Error("target not found");
