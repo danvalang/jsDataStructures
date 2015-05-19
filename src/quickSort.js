@@ -6,12 +6,17 @@ function QuickSort(data) {
   }
 
   function conquer(data) {
-    var size = data.length - 1;
-    return divide(data);
+    var leftArray = [];
+    var rightArray = [];
+    var pivot = divide(data);
+    if (leftArray.length > 1)
+      leftArray = QuickSort(leftArray);
+    if (rightArray.length > 1)
+      rightArray = QuickSort(rightArray);
+    return leftArray.concat([pivot], rightArray);
 
     function divide(data) {
-      var leftArray = [];
-      var rightArray = [];
+      var size = data.length - 1;
       var pivot = data[size];
       for (var index = 0; index < size; index++) {
         value = data[index];
@@ -20,11 +25,7 @@ function QuickSort(data) {
         if (value > pivot)
           rightArray.push(value);
       }
-      if (leftArray.length > 1)
-        leftArray = QuickSort(leftArray);
-      if (rightArray.length > 1)
-        rightArray = QuickSort(rightArray);
-      return leftArray.concat([pivot], rightArray);
+      return pivot;
 
     }
   }
