@@ -10,9 +10,9 @@ function BinarySearch(data, target, callBack) {
     try {
       if (start >= end || (end <= 1) && start === 0) {
         if (data[end] === target) {
-          return target;
+          return end;
         }
-        throw new Error("target not found");
+        throw new RangeError("target not found");
       } else {
         var middle = Math.floor(end - start / 2);
         var value = data[middle];
@@ -25,10 +25,10 @@ function BinarySearch(data, target, callBack) {
         return middle;
       }
 
-    } catch (e) {
+    } catch (error) {
       console.log(start, end);
-      console.error(e);
-      throw (e);
+      console.error(error);
+      throw (error);
     }
   }
 }
