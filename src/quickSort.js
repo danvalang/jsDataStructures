@@ -9,10 +9,6 @@ function QuickSort(data) {
     var leftArray = [];
     var rightArray = [];
     var pivot = divide(data);
-    if (leftArray.length > 1)
-      leftArray = QuickSort(leftArray);
-    if (rightArray.length > 1)
-      rightArray = QuickSort(rightArray);
     return leftArray.concat([pivot], rightArray);
 
     function divide(data) {
@@ -25,8 +21,11 @@ function QuickSort(data) {
         if (value > pivot)
           rightArray.push(value);
       }
+      if (leftArray.length > 1)
+        leftArray = QuickSort(leftArray);
+      if (rightArray.length > 1)
+        rightArray = QuickSort(rightArray);
       return pivot;
-
     }
   }
 }
