@@ -89,7 +89,6 @@ function Node(data, previous, next) {
 
 }
 
-
 module.exports = {
   Node: Node,
   LinkedList: LinkedList

@@ -5,31 +5,26 @@ function BinarySearch(data, target, callBack) {
     throw new Error("Invalid Arguments");
   }
 
-
   function searchbyIndex(start, end) {
-    try {
-      if (start >= end || (end <= 1 && start === 0)) {
-        if (data[end] === target) {
-          return end;
-        }
-        throw new RangeError("target not found");
-      } else {
-        var middle = Math.floor(end - start / 2);
-        var value = data[middle];
-        if (target > value) {
-          return searchbyIndex(middle - 1, end);
-        }
-        if (target < value) {
-          return searchbyIndex(start, middle - 1);
-        }
-        return middle;
-      }
-
-    } catch (error) {
-      console.log(start, end);
-      console.error(error);
-      throw (error);
+    if (data[end] === target)
+      return end;
+    if (start >= end) {
+      throw new RangeError("target not found");
+    } else {
+      return divideSearchDomains(start, end);
     }
+  }
+
+  function divideSearchDomains(start, end) {
+    var middle = Math.floor(end - start / 2);
+    var value = data[middle];
+    if (target < value) {
+      return searchbyIndex(start, middle - 1);
+    }
+    if (target > value) {
+      return searchbyIndex(middle - 1, end);
+    }
+    return middle;
   }
 }
 

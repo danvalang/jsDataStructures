@@ -8,7 +8,7 @@ function SLNode(level, key, value) {
  function SkipList(maxLevel, P) {
   // Properties
   this.maxLevel = maxLevel ? maxLevel : 8;
-  this.P = P ? P : 0.25;               
+  this.P = P ? P : 0.25;
 
   // Init
   this.currentLevel = 0;
@@ -50,7 +50,7 @@ function SLNode(level, key, value) {
     // or insert a new element
     else {
       // Generate random level
-      var rLevel = this.randomLevel();
+      var rLevel = this.generateRandomLevel();
 
       if(rLevel > this.currentLevel) {
         for(i=this.currentLevel+1; i<=rLevel; i++) {
@@ -60,7 +60,7 @@ function SLNode(level, key, value) {
         // set new level
         this.currentLevel = rLevel;
       }
-      
+
       // save the new element @ cursor and push links
       cursor = new SLNode(rLevel, key, value);
       for(i=0; i<=rLevel; i++) {
@@ -120,7 +120,7 @@ function SLNode(level, key, value) {
     }
   }
 
-  this.randomLevel = function() {
+  this.generateRandomLevel = function() {
     // level and MaxLevel are 0 based for easy array index mapping
     var index = this.maxLevel - 1;
     var level = 0;

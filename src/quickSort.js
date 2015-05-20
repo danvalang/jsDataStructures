@@ -2,16 +2,20 @@ function QuickSort(data) {
   if (data.length < 1) {
     return data;
   } else {
-    return conquer(data);
+    return sort(data);
   }
 
-  function conquer(data) {
+  function sort(data) {
     var leftArray = [];
     var rightArray = [];
-    var pivot = divide(data);
+    var pivot = divideAndPivot(data);
+    if (leftArray.length > 1)
+      leftArray = QuickSort(leftArray);
+    if (rightArray.length > 1)
+      rightArray = QuickSort(rightArray);
     return leftArray.concat([pivot], rightArray);
 
-    function divide(data) {
+    function divideAndPivot(data) {
       var size = data.length - 1;
       var pivot = data[size];
       for (var index = 0; index < size; index++) {
@@ -21,10 +25,6 @@ function QuickSort(data) {
         if (value > pivot)
           rightArray.push(value);
       }
-      if (leftArray.length > 1)
-        leftArray = QuickSort(leftArray);
-      if (rightArray.length > 1)
-        rightArray = QuickSort(rightArray);
       return pivot;
     }
   }
