@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">src/binarySearch.js</span></h1>
     <h2>
-        Statements: <span class="metric">94.74% <small>(18 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">93.33% <small>(14 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(17 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(10 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">100% <small>(3 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">94.74% <small>(18 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(17 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">src/</a> &#187; binarySearch.js</div>
@@ -50,70 +50,52 @@
 23
 24
 25
-26
-27
-28
-29
-30
-31
-32</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+26</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">44</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">43</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">43</span>
+<span class="cline-any cline-yes">43</span>
+<span class="cline-any cline-yes">43</span>
+<span class="cline-any cline-yes">38</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">4</span>
-<span class="cline-any cline-yes">3</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">19</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">17</span>
-<span class="cline-any cline-yes">17</span>
-<span class="cline-any cline-yes">17</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17</span>
-<span class="cline-any cline-yes">16</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span></td><td class="text"><pre class="prettyprint lang-js">function BinarySearch(data, target, callBack) {
-  if (data instanceof Array &amp;&amp; callBack instanceof Function) {
+  //TODO; Search over linked lists
+  if (data instanceof Array &amp;&amp; callBack instanceof Function)
     return callBack(searchbyIndex(0, data.length - 1));
-  } else {
+  else
     throw new Error("Invalid Arguments");
-  }
 &nbsp;
   function searchbyIndex(start, end) {
-      if (start &gt;= end || (end &lt;= 1 &amp;&amp; start === 0)) {
-        if (data[end] === target) {
-          return end;
-        } else
-          throw new RangeError("target not found");
-      } else {
-        return divideSearchDomains(start, end);
-      }
+    if (start &gt; end)
+      throw new RangeError("target not found");
+    else
+      return divideSearchDomains(start, end);
   }
 &nbsp;
   function divideSearchDomains(start, end) {
     var middle = Math.floor(end - start / 2);
     var value = data[middle];
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (target &gt; value) {
-<span class="cstat-no" title="statement not covered" >      return searchbyIndex(middle - 1, end);</span>
-    }
-    if (target &lt; value) {
+    if (target &lt; value)
       return searchbyIndex(start, middle - 1);
-    }
+    if (target &gt; value)
+      return searchbyIndex(middle + 1, end);
     return middle;
   }
 }
@@ -123,7 +105,7 @@ module.exports = BinarySearch;</pre></td></tr>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed May 20 2015 13:07:25 GMT-0700 (MST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed May 20 2015 16:27:38 GMT-0700 (MST)</div>
 </div>
 <script src="../prettify.js"></script>
 <script>
