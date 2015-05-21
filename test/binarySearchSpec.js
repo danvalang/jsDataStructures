@@ -7,14 +7,11 @@ describe('Binary Search', function() {
 		fixtureInt = [2, 3, 5, 6, 7, 9, 10, 11, 12, 14];
 		fixtureString = ['a', 'dan', 'f', 'mira', 'q', 'soy', 'v', 'yo'];
 	});
-	it('should throw and error when invalid arguments are given', function(done) {
-		try {
+	it('should throw and error when invalid arguments are given', function() {
+		var actual = function() {
 			BinarySearch(1, 2, 3);
-		} catch(e) {
-			e.should.be.instanceof(Error);
-		} finally {
-			done();
-		}
+		};
+		expect(actual).to.throw(Error);
 	});
 	it('should search for a number', function(done) {
 		BinarySearch(fixtureInt, 3, function(result) {
@@ -34,15 +31,11 @@ describe('Binary Search', function() {
 			done();
 		});
 	});
-	it('should throw an exception when target is not found', function(done) {
-		try {
-			BinarySearch(fixtureInt, 4, function(result) {
-				// Does not enter
-			});
-		} catch(e) {
-			e.should.be.instanceOf(RangeError);
-		} finally {
-			done();
-		}
+	it('should throw an exception when target is not found', function() {
+		var actual = function() {
+			BinarySearch(fixtureInt, 4, function(result) {});
+		};
+		expect(actual).to.throw(RangeError);
+
 	});
 });
