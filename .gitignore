@@ -1,2 +1,5 @@
 /test/helpers/chai.js
 /coverage/**
+
+# added by GitSavvy
+/.tern-project

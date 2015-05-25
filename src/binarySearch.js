@@ -5,10 +5,10 @@ function BinarySearch(data, target, callBack) {
 		throw new Error("Invalid Arguments");
 
 	function searchbyIndex(start, end) {
-		if(start > end)
-			throw new RangeError("target not found");
-		else
+		if(start <= end)
 			return divideSearchDomains(start, end);
+		else
+			throw new RangeError("target not found");
 	}
 
 	function divideSearchDomains(start, end) {
