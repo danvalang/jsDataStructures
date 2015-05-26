@@ -21,7 +21,6 @@ describe('LinkedList', function() {
 		expect(list.endNode.data).to.be.equal('end node');
 	});
 	it('should be able to go to the end', function() {
-		list.insertAfter('in the middle');
 		list.insertEnd('End Point');
 		list.goEnd();
 		expect(list.endNode.data).to.be.equal('End Point');
